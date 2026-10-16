@@ -1,0 +1,46 @@
+﻿<button id="btnLoad">Load Employees</button>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+
+    <tbody id="empTable">
+    </tbody>
+</table>
+
+<script>
+    $("#btnLoad").click(function () {
+
+        $.ajax({
+
+            url: "/Home/GetEmployees",
+
+            type: "GET",
+
+            success: function (employees) {
+
+                $("#empTable").html("");
+
+                $.each(employees, function (index, emp) {
+
+                    $("#empTable").append(
+                        "<tr>" +
+                        "<td>" + emp.id + "</td>" +
+                        "<td>" + emp.name + "</td>" +
+                        "<td>" + emp.salary + "</td>" +
+                        "</tr>"
+                    );
+
+                });
+
+            }
+
+        });
+
+    });
+</script>

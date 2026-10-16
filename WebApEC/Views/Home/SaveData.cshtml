@@ -1,0 +1,35 @@
+﻿<input type="text" id="txtName" />
+
+<button id="btnSave">Save</button>
+
+<script>
+
+$("#btnSave").click(function () {
+
+    var name = $("#txtName").val();
+
+    $.ajax({
+
+        url: "/Home/SaveData",
+
+        type: "POST",
+
+        data: {
+            Name: name
+        },
+
+        success: function (response) {
+
+            alert(response);
+
+        },
+
+        error: function () {
+            alert("Error");
+        }
+
+    });
+
+});
+
+</script>
